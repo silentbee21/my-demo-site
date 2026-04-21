@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Demo Site</title>
+ 
+    <!-- ✅ GA4 Base Tag — paste your Measurement ID below -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7F7VEN42M7');
+    </script>
+ 
+    <style>
+      body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+      button, a { margin: 10px; padding: 12px 24px; cursor: pointer; font-size: 16px; }
+      button { background-color: #0078d4; color: white; border: none; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+ 
+    <h1>Welcome to My Demo Site</h1>
+    <p>This site is used for Google Analytics 4 tracking and Azure Data Factory pipeline testing.</p>
+ 
+    <!-- Tracked Buttons -->
+    <button onclick="trackClick('hero_cta', 'Home Page')">Get Started</button>
+    <button onclick="trackClick('learn_more', 'Home Page')">Learn More</button>
+    <a href="#pricing" onclick="trackClick('pricing_link', 'Home Page')">View Pricing</a>
+ 
+    <hr/>
+    <h2>Products</h2>
+    <button onclick="trackClick('product_A', 'Products Section')">Product A</button>
+    <button onclick="trackClick('product_B', 'Products Section')">Product B</button>
+ 
+    <!-- ✅ Click Tracking Function -->
+    <script>
+      function trackClick(elementName, pageName) {
+        gtag('event', 'button_click', {
+          element_name: elementName,
+          page_name: pageName,
+          timestamp: new Date().toISOString()
+        });
+        console.log('Tracked click:', elementName, pageName);
+      }
+    </script>
+ 
+  </body>
+</html>
