@@ -3,40 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <title>My Demo Site</title>
- 
-    <<!-- Google Tag Manager -->
+
+    <!--   DATA LAYER     tws-ga4-version-0.3.4        -->
+    <!-- Page view dataLayer — logged-out user (Section 1.5.2) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        "event": "page_view",
+        "env_deployment": "PROD",           // DEV | STAGE | PROD
+        "env_brand": "demo",                // your brand name
+        "env_region": "GLOBAL",
+        "env_country": "GLOBAL",
+        "page_name": "home page",
+        "page_status": "200",
+        "page_template": "home",
+        "page_path": "/my-demo-site/",
+        "page_url": "https://silentbee21.github.io/my-demo-site/"
+        "page_parameters": undefined,
+        "page_type": "home",
+        "page_category": undefined,
+        "page_sub_category": undefined,
+        "page_cat1": undefined,
+        "page_cat2": undefined,
+        "page_language": "en",
+        "page_country": undefined,
+        "page_load_time": undefined,        // populate dynamically if possible
+        "content_id": undefined,
+        "content_name": undefined,
+        "content_type": undefined,
+        "content_category": undefined,
+        "content_tags": undefined,
+        "content_availability": undefined,
+        "content_words": undefined,
+        "content_duration": undefined,
+        "content_publ_date": undefined,
+        "content_publ_days": undefined,
+        "user_role": "Public",              // Public = logged-out user
+        "user_login_state": false
+      });
+    </script>
+
+    <!-- script for Multiminds tracking compatibility (Section 1.5.2) -->
+    <script>
+      window.udata = window.udata || [];
+      window.udata.push({
+        "event_name": "page navigation",
+        "env_deployment": "PROD",
+        "env_brand": "demo",
+        "env_region": "GLOBAL",
+        "env_country": "GLOBAL",
+        "page_name": "home page",
+        "page_status": "200",
+        "page_template": "home",
+        "page_path": "/my-demo-site/",
+        "page_url": "https://silentbee21.github.io/my-demo-site/"
+        "page_parameters": undefined,
+        "page_type": "home",
+        "page_category": undefined,
+        "page_sub_category": undefined,
+        "page_cat1": undefined,
+        "page_cat2": undefined,
+        "page_language": "en",
+        "page_country": undefined,
+        "page_load_time": undefined,
+        "content_id": undefined,
+        "content_name": undefined,
+        "content_type": undefined,
+        "content_category": undefined,
+        "content_tags": undefined,
+        "content_availability": undefined,
+        "content_words": undefined,
+        "content_duration": undefined,
+        "content_publ_date": undefined,
+        "content_publ_days": undefined,
+        "user_role": "Public",
+        "user_login_state": false
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K9VNHLZG');</script>
     <!-- End Google Tag Manager -->
- 
+
     <style>
       body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
       button, a { margin: 10px; padding: 12px 24px; cursor: pointer; font-size: 16px; }
       button { background-color: #0078d4; color: white; border: none; border-radius: 4px; }
+      nav ul { list-style: none; padding: 0; display: flex; gap: 10px; }
+      nav ul li a { text-decoration: none; color: #0078d4; font-weight: bold; }
+      footer ul { list-style: none; padding: 0; display: flex; gap: 10px; }
+      footer ul li a { text-decoration: none; color: #555; }
     </style>
   </head>
   <body>
- 
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9VNHLZG"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
- 
+
+    <!-- Header Navigation (Section 1.14.1) -->
+    <!-- GTM listens for clicks on .menu-tracking elements; data-menu_type tells it which nav -->
+    <nav>
+      <ul class="menu-tracking" data-menu_type="header navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
     <h1>Welcome to My Demo Site</h1>
     <p>This site is used for GA4 tracking and Azure Data Factory pipeline testing.</p>
- 
-    <!-- ✅ No onclick needed — GTM handles all click tracking -->
-    <button id="hero-btn">Get Started</button>
-    <button id="learn-btn">Learn More</button>
+
+    <!--
+      CTA Button Tracking (Section 1.8)
+      - class "cta-button-tracking" is required — GTM uses this to identify CTA buttons
+      - data-cta_button_tracking value = button_tracking_type selected in CMS
+        (use "not selected" as default when no type is assigned)
+    -->
+    <button id="hero-btn" class="cta-button-tracking" data-cta_button_tracking="get_started">
+      Get Started
+    </button>
+
+    <button id="learn-btn" class="cta-button-tracking" data-cta_button_tracking="learn_more">
+      Learn More
+    </button>
+
+    <!--
+      Outbound / anchor link — no cta-button-tracking class needed here.
+      GTM handles link clicks separately (Section 1.17).
+    -->
     <a href="#pricing" id="pricing-link">View Pricing</a>
- 
+
     <hr/>
+
     <h2>Products</h2>
-    <button id="product-a">Product A</button>
-    <button id="product-b">Product B</button>
- 
+
+    <!-- Product CTA buttons (Section 1.8) -->
+    <button id="product-a" class="cta-button-tracking" data-cta_button_tracking="product_a">
+      Product A
+    </button>
+
+    <button id="product-b" class="cta-button-tracking" data-cta_button_tracking="product_b">
+      Product B
+    </button>
+
+    <hr/>
+
+    <!-- Footer Navigation (Section 1.14.5) -->
+    <footer>
+      <ul class="menu-tracking" data-menu_type="footer navigation">
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="#contact" id="contact">Contact Us</a></li>
+      </ul>
+    </footer>
+
   </body>
 </html>
